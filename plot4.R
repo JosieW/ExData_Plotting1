@@ -10,7 +10,7 @@ elec$DateTime <- strptime(paste(elec$Date,elec$Time),"%d/%m/%Y%H:%M:%S")
 elecsub <- subset(elec,DateTime >= strptime("2007-02-01","%Y-%m-%d") & DateTime < strptime("2007-02-03","%Y-%m-%d"))
 
 #Set output to file
-png("plot4.png")
+png("plot4.png",width = 480, height = 480)
 
 #Set to have two columns each with two graphs
 par(mfcol=c(2,2))
@@ -20,7 +20,7 @@ plot(elecsub$DateTime,elecsub$Sub_metering_1, type = "n", ylab="Entergy sub mete
 points(elecsub$DateTime,elecsub$Sub_metering_1, type = "l")
 points(elecsub$DateTime,elecsub$Sub_metering_2, type = "l", col="Red")
 points(elecsub$DateTime,elecsub$Sub_metering_3, type = "l", col="Blue")
-legend("topright", lty=1,col = c("Black","Red", "Blue"), legend = c("Sub_metering_1", "Sub_metering_3","Sub_metering_3"))
+legend("topright", lty=1,col = c("Black","Red", "Blue"), legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
 
 with(elecsub,plot(DateTime,Voltage, type = "l"))
 with(elecsub,plot(DateTime,Global_reactive_power, type = "l"))
